@@ -9,7 +9,7 @@ import ctaBg from "@/assets/ctsBg.jpg";
 
 const CTASection = () => {
     return (
-        <section className="relative w-full h-[600px] lg:h-[800px] flex items-center justify-center overflow-hidden">
+        <section className="relative w-full h-[600px] lg:h-[1000px] flex items-center justify-center overflow-hidden">
             {/* Full Background Image */}
             <div className="absolute inset-0 z-0">
                 <Image

@@ -11,37 +11,31 @@ export const mainNavigation: NavItem[] = [
 
 export const socialLinks: SocialLink[] = [
   { name: 'Twitter', href: 'https://twitter.com', icon: 'twitter' },
-  { name: 'LinkedIn', href: 'https://linkedin.com', icon: 'linkedin' },
-  { name: 'GitHub', href: 'https://github.com', icon: 'github' },
   { name: 'Instagram', href: 'https://instagram.com', icon: 'instagram' },
+  { name: 'Facebook', href: 'https://facebook.com', icon: 'facebook' },
+  { name: 'Youtube', href: 'https://youtube.com', icon: 'youtube' },
 ];
 
 export const footerSections: FooterSection[] = [
   {
-    title: 'Company',
+    title: 'Home',
     links: [
-      { label: 'About Us', href: '/about' },
-      { label: 'Our Team', href: '/team' },
-      { label: 'Careers', href: '/careers' },
-      { label: 'Contact', href: '/contact' },
+      { label: 'About', href: '/about' },
+      { label: 'Category', href: '/category' },
+      { label: 'All Cars', href: '/all-cars' },
     ],
   },
   {
-    title: 'Services',
+    title: 'Business Hours',
     links: [
-      { label: 'Web Development', href: '/services/web-development' },
-      { label: 'Mobile Apps', href: '/services/mobile-apps' },
-      { label: 'UI/UX Design', href: '/services/design' },
-      { label: 'Consulting', href: '/services/consulting' },
+      { label: 'We are open 24/7', href: '#' },
     ],
   },
   {
-    title: 'Resources',
+    title: 'Contact Info',
     links: [
-      { label: 'Blog', href: '/blog' },
-      { label: 'Documentation', href: '/docs' },
-      { label: 'Help Center', href: '/help' },
-      { label: 'Privacy Policy', href: '/privacy' },
+      { label: '+1 (555) 234-6789', href: 'tel:+15552346789' },
+      { label: 'info@12345aa.com', href: 'mailto:info@12345aa.com' },
     ],
   },
 ];

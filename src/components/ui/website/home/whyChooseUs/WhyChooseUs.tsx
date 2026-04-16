@@ -25,7 +25,7 @@ const WhyChooseUs = () => {
                         initial={{ opacity: 0, y: 20 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        className="md:col-span-2 relative h-[400px] border border-white/20 rounded-[2.5rem] overflow-hidden group"
+                        className="md:col-span-2 relative h-[400px] border border-white/20 rounded-lg overflow-hidden group"
                     >
                         <motion.div
                             variants={{
@@ -52,7 +52,7 @@ const WhyChooseUs = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.1 }}
-                        className="md:col-span-1 bg-[#1a1a1a] p-10 border border-white/20 rounded-[2.5rem] flex flex-col justify-between"
+                        className="md:col-span-1 bg-[#1a1a1a] p-10 border border-white/20 rounded-lg flex flex-col justify-between"
                     >
                         <div>
                             <Typography variant="h3" className="text-white italic mb-6 text-2xl">
@@ -73,7 +73,7 @@ const WhyChooseUs = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.2 }}
-                        className="md:col-span-1 bg-[#1a1a1a] p-10 border border-white/20 rounded-[2.5rem] flex flex-col justify-between"
+                        className="md:col-span-1 bg-[#1a1a1a] p-10 border border-white/20 rounded-lg flex flex-col justify-between"
                     >
                         <div>
                             <Typography variant="h3" className="text-white italic mb-6 text-2xl">
@@ -95,7 +95,7 @@ const WhyChooseUs = () => {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="md:col-span-2 relative h-[400px] border border-white/20 rounded-[2.5rem] overflow-hidden group"
+                        className="md:col-span-2 relative h-[400px] border border-white/20 rounded-lg overflow-hidden group"
                     >
                         <motion.div
                             variants={{
