@@ -18,20 +18,20 @@ const CarDetails = ({ car }: CarDetailsProps) => {
   const [selectedImageIndex, setSelectedImageIndex] = useState(0);
 
   return (
-    <section className="py-20 bg-white min-h-screen">
+    <section className="pt-20 pb-20 bg-white min-h-screen">
       <Container>
         {/* Back Link */}
-        <div className="mb-12">
+        <div className="mt-10">
           <Link
             href="/cars"
-            className="inline-flex cursor-pointer items-center gap-2 text-gray-900 font-semibold hover:text-gray-600 transition-colors"
+            className="inline-flex items-center gap-2 text-gray-900 font-semibold hover:text-gray-600 transition-all hover:-translate-x-1"
           >
             <ArrowLeft size={20} />
             <span className="italic">Back to Cars</span>
           </Link>
         </div>
 
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:items-center items-start">
           {/* Left Column - Gallery */}
           <div className="space-y-6">
             {/* Main Image */}

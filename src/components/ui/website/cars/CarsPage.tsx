@@ -66,8 +66,8 @@ const CarsPage = () => {
             transition={{ duration: 0.4 }}
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
           >
-            {currentCars.map((car) => (
-              <CarCard key={car.id} {...car} />
+            {currentCars.map((car, index) => (
+              <CarCard key={car.id} {...car} priority={index < 2} />
             ))}
           </motion.div>
         </AnimatePresence>

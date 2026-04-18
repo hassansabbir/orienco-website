@@ -5,6 +5,7 @@ import { MoveUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import bannerBg from "@/assets/bannerBg.png";
 import PremiumButton from "@/components/ui/PremiumButton";
+import Link from "next/link";
 
 const Banner = () => {
   return (
@@ -24,13 +25,13 @@ const Banner = () => {
       </div>
 
       {/* Hero Content */}
-      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-4xl pt-32">
+      <div className="relative z-10 flex flex-col items-center text-center px-4 max-w-5xl pt-32">
         <motion.h1
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-4xl md:text-6xl lg:text-7xl font-semibold italic text-white mb-6 tracking-tight"
-          style={{ textShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
+          className="text-4xl md:text-6xl lg:text-8xl font-semibold italic text-white mb-6 tracking-tight"
+        // style={{ textShadow: "0 4px 12px rgba(0,0,0,0.3)" }}
         >
           Luxury Car for Rental
         </motion.h1>
@@ -39,18 +40,19 @@ const Banner = () => {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-          className="text-sm md:text-lg text-white/90 max-w-2xl mb-10 leading-relaxed font-light"
+          className="text-sm md:text-lg text-white/90 max-w-2xl mb-6 leading-relaxed font-light font-semibold"
         >
           Drive elegance and power choose from our premium collection of luxury vehicles, designed for unmatched comfort and performance.
         </motion.p>
 
-        <PremiumButton
-          variant="black"
-          icon={<MoveUpRight className="h-5 w-5" />}
-          className=""
-        >
-          See All Cars
-        </PremiumButton>
+        <Link href={"/cars"} className="w-fit">
+          <PremiumButton
+            variant="black"
+            icon={<MoveUpRight className="h-5 w-5" />}
+            className="cursor-pointer"
+          >
+            See All Cars
+          </PremiumButton></Link>
       </div>
     </section>
   );

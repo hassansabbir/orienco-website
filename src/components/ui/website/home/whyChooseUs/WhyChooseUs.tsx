@@ -22,9 +22,10 @@ const WhyChooseUs = () => {
                     {/* Top Left: Mercedes Emblem Image */}
                     <motion.div
                         whileHover="hover"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
+                        transition={{ duration: 0.8, ease: "easeOut" }}
                         className="md:col-span-2 relative h-[400px] border border-white/20 rounded-lg overflow-hidden group"
                     >
                         <motion.div
@@ -48,10 +49,10 @@ const WhyChooseUs = () => {
 
                     {/* Top Right: Easy Reservation Card */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.1 }}
+                        transition={{ duration: 0.8, delay: 0.1, ease: "easeOut" }}
                         className="md:col-span-1 bg-[#1a1a1a] p-10 border border-white/20 rounded-lg flex flex-col justify-between"
                     >
                         <div>
@@ -69,10 +70,10 @@ const WhyChooseUs = () => {
 
                     {/* Bottom Left: Premium Fleet Selection Card */}
                     <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: -50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.2 }}
+                        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
                         className="md:col-span-1 bg-[#1a1a1a] p-10 border border-white/20 rounded-lg flex flex-col justify-between"
                     >
                         <div>
@@ -91,10 +92,10 @@ const WhyChooseUs = () => {
                     {/* Bottom Right: Second Image Placeholder */}
                     <motion.div
                         whileHover="hover"
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        initial={{ opacity: 0, x: 50 }}
+                        whileInView={{ opacity: 1, x: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
                         className="md:col-span-2 relative h-[400px] border border-white/20 rounded-lg overflow-hidden group"
                     >
                         <motion.div

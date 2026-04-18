@@ -160,27 +160,47 @@ const WhatOurCustomersSay = () => {
     const sideReviews = reviews.filter(r => !r.large);
 
     return (
-        <Section className="py-24 bg-[#F8F9FA]">
+        <Section className="py-24 bg-[#F8F9FA] overflow-hidden">
             <div className="container mx-auto">
-                <div className="text-center mb-16">
+                <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.8 }}
+                    className="text-center mb-16"
+                >
                     <Typography variant="h1" className="text-black mb-4 italic font-bold text-4xl lg:text-5xl">
                         What Our Clients Say
                     </Typography>
                     <Typography variant="p" className="text-black/60 text-lg">
                         Real experience from customer who found their perfect car at Orienco.
                     </Typography>
-                </div>
+                </motion.div>
 
                 <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
                     {/* Large Hero Review */}
-                    <div className="lg:col-span-1">
+                    <motion.div
+                        initial={{ opacity: 0, x: -30 }}
+                        whileInView={{ opacity: 1, x: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8 }}
+                        className="lg:col-span-1"
+                    >
                         {mainReview && <ReviewCard review={mainReview} />}
-                    </div>
+                    </motion.div>
 
                     {/* Small Reviews Grid */}
                     <div className="lg:col-span-2 grid grid-cols-1 md:grid-cols-2 gap-6">
-                        {sideReviews.map((review) => (
-                            <ReviewCard key={review.id} review={review} />
+                        {sideReviews.map((review, index) => (
+                            <motion.div
+                                key={review.id}
+                                initial={{ opacity: 0, y: 30 }}
+                                whileInView={{ opacity: 1, y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ duration: 0.6, delay: index * 0.1 }}
+                            >
+                                <ReviewCard review={review} />
+                            </motion.div>
                         ))}
                     </div>
                 </div>

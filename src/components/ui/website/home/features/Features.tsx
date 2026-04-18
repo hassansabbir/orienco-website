@@ -1,9 +1,11 @@
+"use client";
 
 import Section from "@/components/ui/Section";
 import Typography from "@/components/ui/Typography";
 import PremiumButton from "@/components/ui/PremiumButton";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import { motion } from "framer-motion";
 import blackCardBgCarImage from "@/assets/blackCardBgCarImage.png";
 
 const mainCardData = {
@@ -44,10 +46,16 @@ const smallCardsData = [
 
 const Features = () => {
   return (
-    <Section className="py-16 bg-slate-100">
+    <Section className="py-16 bg-slate-100 overflow-hidden">
       <div className="container mx-auto grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Main Card */}
-        <div className="relative bg-black rounded-3xl p-8 flex flex-col justify-between overflow-hidden">
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.2 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+          className="relative bg-black rounded-3xl p-8 flex flex-col justify-between overflow-hidden"
+        >
           {/* White flash highlight in top-left */}
           <div className="pointer-events-none absolute -top-20 -left-24 h-64 w-64 rounded-4xl bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),rgba(255,255,255,0.1),transparent)] opacity-80" />
           {/* Low-visibility car image at the bottom */}
@@ -56,7 +64,7 @@ const Features = () => {
               src={blackCardBgCarImage}
               alt="Luxury car"
               fill
-              sizes="(min-width: 1024px) 50vw, 100vw"
+              sizes="(max-width: 1024px) 50vw, 100vw"
               className="object-cover object-bottom-right"
               priority={false}
             />
@@ -77,13 +85,17 @@ const Features = () => {
               {mainCardData.buttonText}
             </PremiumButton>
           </div>
-        </div>
+        </motion.div>
 
         {/* Small Cards Grid */}
         <div className="grid grid-cols-1 lg:col-span-2 lg:grid-cols-2 gap-8">
           {smallCardsData.map((card, index) => (
-            <div
+            <motion.div
               key={index}
+              initial={{ opacity: 0, y: 30 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, amount: 0.2 }}
+              transition={{ duration: 0.6, delay: index * 0.1, ease: "easeOut" }}
               className="bg-white rounded-3xl p-8 shadow-sm flex flex-col justify-between"
             >
               <div>
@@ -97,7 +109,7 @@ const Features = () => {
                   {card.description}
                 </Typography>
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
       </div>

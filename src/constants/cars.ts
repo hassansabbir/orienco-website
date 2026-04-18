@@ -8,6 +8,17 @@ import mercedesSClass from "@/assets/vehicles/mercedes-s-class.png";
 import mitsubishiLancer from "@/assets/vehicles/mitsubishi-lancer.png";
 import toyotaSupra from "@/assets/vehicles/toyota-supra.png";
 
+export interface CarSpecs {
+  engine: string;
+  horsepower: string;
+  acceleration: string;
+  topSpeed: string;
+  transmission: string;
+  drivetrain: string;
+  seatingCapacity: string;
+  fuelType: string;
+}
+
 export interface Car {
   id: string;
   name: string;
@@ -16,6 +27,7 @@ export interface Car {
   images: StaticImageData[];
   description: string;
   features: string[];
+  specs: CarSpecs;
 }
 
 export const mockCars: Car[] = [
@@ -36,6 +48,16 @@ export const mockCars: Car[] = [
       "Panoramic glass roof",
       "Surround-view camera system",
     ],
+    specs: {
+      engine: "Dual Electric Motors",
+      horsepower: "522 hp",
+      acceleration: "0-60 mph in 3.9s",
+      topSpeed: "152 mph",
+      transmission: "2-Speed Automatic",
+      drivetrain: "AWD",
+      seatingCapacity: "5 passengers",
+      fuelType: "Electric",
+    },
   },
   {
     id: "2",
@@ -54,6 +76,16 @@ export const mockCars: Car[] = [
       "Adaptive cruise control",
       "Premium leather seats",
     ],
+    specs: {
+      engine: "2.5L Turbocharged Flat-4",
+      horsepower: "365 hp",
+      acceleration: "0-60 mph in 4.0s",
+      topSpeed: "182 mph",
+      transmission: "7-Speed PDK",
+      drivetrain: "RWD",
+      seatingCapacity: "2 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
   {
     id: "3",
@@ -72,6 +104,16 @@ export const mockCars: Car[] = [
       "Airmatic suspension",
       "Driver assistance package",
     ],
+    specs: {
+      engine: "3.0L Inline-6 Turbo",
+      horsepower: "429 hp",
+      acceleration: "0-60 mph in 4.9s",
+      topSpeed: "130 mph",
+      transmission: "9-Speed Automatic",
+      drivetrain: "4MATIC AWD",
+      seatingCapacity: "5 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
   {
     id: "4",
@@ -90,6 +132,16 @@ export const mockCars: Car[] = [
       "Sport-tuned suspension",
       "Carbon fiber accents",
     ],
+    specs: {
+      engine: "2.0L Turbocharged I4",
+      horsepower: "291 hp",
+      acceleration: "0-60 mph in 5.2s",
+      topSpeed: "155 mph",
+      transmission: "5-Speed Manual",
+      drivetrain: "AWD",
+      seatingCapacity: "5 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
   {
     id: "5",
@@ -108,6 +160,16 @@ export const mockCars: Car[] = [
       "Supra Connect services",
       "Launch control",
     ],
+    specs: {
+      engine: "3.0L Turbocharged I6",
+      horsepower: "382 hp",
+      acceleration: "0-60 mph in 3.9s",
+      topSpeed: "155 mph",
+      transmission: "8-Speed Automatic",
+      drivetrain: "RWD",
+      seatingCapacity: "2 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
   {
     id: "6",
@@ -126,6 +188,16 @@ export const mockCars: Car[] = [
       "Dynamic stability control",
       "Gesture control",
     ],
+    specs: {
+      engine: "4.4L V8 Twin-Turbo",
+      horsepower: "600 hp",
+      acceleration: "0-60 mph in 3.8s",
+      topSpeed: "155 mph",
+      transmission: "8-Speed M Steptronic",
+      drivetrain: "M xDrive AWD",
+      seatingCapacity: "5 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
   {
     id: "7",
@@ -144,6 +216,16 @@ export const mockCars: Car[] = [
       "Custom audio system",
       "Exposed carbon details",
     ],
+    specs: {
+      engine: "5.2L V12 Twin-Turbo",
+      horsepower: "715 hp",
+      acceleration: "0-60 mph in 3.4s",
+      topSpeed: "211 mph",
+      transmission: "8-Speed Automatic",
+      drivetrain: "RWD",
+      seatingCapacity: "2 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
   {
     id: "8",
@@ -162,6 +244,16 @@ export const mockCars: Car[] = [
       "Scuderia shields",
       "Engine bay lighting",
     ],
+    specs: {
+      engine: "3.9L V8 Twin-Turbo",
+      horsepower: "710 hp",
+      acceleration: "0-60 mph in 2.9s",
+      topSpeed: "211 mph",
+      transmission: "7-Speed F1 Dual-Clutch",
+      drivetrain: "RWD",
+      seatingCapacity: "2 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
   {
     id: "9",
@@ -180,5 +272,15 @@ export const mockCars: Car[] = [
       "Digital cockpit",
       "Lifting system",
     ],
+    specs: {
+      engine: "5.2L V10",
+      horsepower: "631 hp",
+      acceleration: "0-60 mph in 2.9s",
+      topSpeed: "202 mph",
+      transmission: "7-Speed Dual-Clutch",
+      drivetrain: "AWD",
+      seatingCapacity: "2 passengers",
+      fuelType: "Premium gasoline",
+    },
   },
 ];

@@ -14,9 +14,10 @@ interface CarCardProps {
   description: string;
   price: number;
   images: StaticImageData[];
+  priority?: boolean;
 }
 
-const CarCard = ({ id, name, description, price, images }: CarCardProps) => {
+const CarCard = ({ id, name, description, price, images, priority = false }: CarCardProps) => {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
 
   const nextImage = () => {
@@ -52,6 +53,7 @@ const CarCard = ({ id, name, description, price, images }: CarCardProps) => {
               src={images[currentImageIndex]}
               alt={name}
               fill
+              priority={priority}
               sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
               className="object-cover"
             />

@@ -89,8 +89,14 @@ const VehicleCard = ({ name, priceRange, image }: { name: string; priceRange: st
 
 const FeaturedVehicles = () => {
     return (
-        <Section className="py-20">
-            <div className="flex flex-col items-center text-center mb-16">
+        <Section className="py-20 overflow-hidden">
+            <motion.div
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, amount: 0.2 }}
+                transition={{ duration: 0.8, ease: "easeOut" }}
+                className="flex flex-col items-center text-center mb-16"
+            >
                 <Typography variant="h1" className="text-black mb-4 font-italic italic text-5xl lg:text-6xl">
                     Featured Vehicles
                 </Typography>
@@ -104,13 +110,35 @@ const FeaturedVehicles = () => {
                 >
                     View All
                 </PremiumButton>
-            </div>
+            </motion.div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <motion.div
+                initial="hidden"
+                whileInView="show"
+                viewport={{ once: true, amount: 0.1 }}
+                variants={{
+                    hidden: { opacity: 0 },
+                    show: {
+                        opacity: 1,
+                        transition: {
+                            staggerChildren: 0.1,
+                        },
+                    },
+                }}
+                className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
+            >
                 {vehicles.map((vehicle, index) => (
-                    <VehicleCard key={index} {...vehicle} />
+                    <motion.div
+                        key={index}
+                        variants={{
+                            hidden: { opacity: 0, y: 30 },
+                            show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
+                        }}
+                    >
+                        <VehicleCard {...vehicle} />
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
         </Section>
     );
 };
