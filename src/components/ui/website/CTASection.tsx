@@ -6,6 +6,7 @@ import { Phone } from "lucide-react";
 import Image from "next/image";
 import { motion } from "framer-motion";
 import ctaBg from "@/assets/ctsBg.jpg";
+import Link from "next/link";
 
 const CTASection = () => {
     return (
@@ -38,13 +39,13 @@ const CTASection = () => {
                         Let&apos;s Get in Touch
                     </Typography>
 
-                    <PremiumButton
+                    <Link href={"/contact"}><PremiumButton
                         variant="white"
-                        className="mx-auto px-8 py-4 shadow-[0_0_40px_rgba(255,255,255,0.2)] ring-1 ring-white/10 text-lg"
+                        className="mx-auto px-8 py-4 shadow-[0_0_40px_rgba(255,255,255,0.2)] ring-1 ring-white/10 text-lg cursor-pointer"
                         icon={<Phone className="w-5 h-5" />}
                     >
                         Book A Call
-                    </PremiumButton>
+                    </PremiumButton></Link>
                 </motion.div>
             </div>
         </section>

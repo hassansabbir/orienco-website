@@ -12,7 +12,7 @@ interface PremiumButtonProps extends HTMLMotionProps<"button"> {
 
 const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
   ({ className, variant = "black", icon, children, ...props }, ref) => {
-    
+
     // Custom shadows to replicate the deep 3D tactile look
     const themeStyles = {
       black: {
@@ -65,13 +65,13 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
         {/* Layered Inner Shadows for the 3D rounded effect */}
         <div className={cn("absolute inset-0 rounded-[20px] pointer-events-none transition-all duration-500", style.innerTop)} />
         <div className={cn("absolute inset-0 rounded-[20px] pointer-events-none transition-all duration-500", style.innerBottom)} />
-        
+
         {/* Subtle light gradient from top to simulate curved surface */}
         <div className="absolute inset-0  rounded-[20px] bg-linear-to-b from-white/4 to-transparent pointer-events-none" />
 
 
         <span className="relative z-10 text-xl tracking-wide font-normal">{children}</span>
-        
+
         {icon && (
           <span className={cn("relative z-10 transition-transform duration-500 group-hover:translate-x-1 group-hover:-translate-y-1", style.iconColor)}>
             {icon}
@@ -85,3 +85,77 @@ const PremiumButton = React.forwardRef<HTMLButtonElement, PremiumButtonProps>(
 PremiumButton.displayName = "PremiumButton";
 
 export default PremiumButton;
+
+
+// "use client";
+
+// import { ArrowUpRight } from "lucide-react";
+// import { ReactNode } from "react";
+// import Link from "next/link";
+
+// interface PremiumButtonProps {
+//   children: ReactNode;
+//   href?: string;
+//   onClick?: () => void;
+//   icon?: ReactNode;
+//   className?: string;
+// }
+
+// export default function PremiumButton({
+//   children,
+//   href,
+//   onClick,
+//   icon = <ArrowUpRight className="w-6 h-6 md:w-7 md:h-7" strokeWidth={2} />,
+//   className = "",
+// }: PremiumButtonProps) {
+//   const buttonContent = (
+//     <span className="relative z-10 flex items-center gap-3 md:gap-4 text-white font-medium text-xl md:text-2xl tracking-tight">
+//       {children}
+//       {icon}
+//     </span>
+//   );
+
+//   const baseClasses = `
+//     group relative inline-flex items-center justify-center
+//     px-8 py-5 md:px-12 md:py-7
+//     rounded-[2rem] md:rounded-[2.5rem]
+//     bg-gradient-to-b from-neutral-700 via-neutral-900 to-black
+//     shadow-[0_10px_30px_rgba(0,0,0,0.5),0_4px_10px_rgba(0,0,0,0.4),inset_0_1px_1px_rgba(255,255,255,0.15),inset_0_-1px_1px_rgba(0,0,0,0.5)]
+//     hover:shadow-[0_15px_40px_rgba(0,0,0,0.6),0_6px_15px_rgba(0,0,0,0.5),inset_0_1px_1px_rgba(255,255,255,0.2),inset_0_-1px_1px_rgba(0,0,0,0.5)]
+//     transition-all duration-300 ease-out
+//     hover:-translate-y-0.5 active:translate-y-0
+//     overflow-hidden
+//     ${className}
+//   `;
+
+//   const glossOverlay = (
+//     <>
+//       {/* Top highlight gloss */}
+//       <span className="absolute inset-x-0 top-0 h-1/2 rounded-t-[2rem] md:rounded-t-[2.5rem] bg-gradient-to-b from-white/10 to-transparent pointer-events-none" />
+
+//       {/* Subtle inner border */}
+//       <span className="absolute inset-0 rounded-[2rem] md:rounded-[2.5rem] ring-1 ring-inset ring-white/5 pointer-events-none" />
+
+//       {/* Hover shine effect */}
+//       <span className="absolute inset-0 rounded-[2rem] md:rounded-[2.5rem] opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none">
+//         <span className="absolute -inset-px bg-gradient-to-r from-transparent via-white/10 to-transparent -translate-x-full group-hover:translate-x-full transition-transform duration-1000 ease-out" />
+//       </span>
+//     </>
+//   );
+
+//   if (href) {
+//     return (
+//       <Link href={href} className={baseClasses}>
+//         {glossOverlay}
+//         {buttonContent}
+//       </Link>
+//     );
+//   }
+
+//   return (
+//     <button onClick={onClick} className={baseClasses}>
+//       {glossOverlay}
+//       {buttonContent}
+//     </button>
+//   );
+// }

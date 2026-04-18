@@ -7,6 +7,7 @@ import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
 import { motion } from "framer-motion";
 import blackCardBgCarImage from "@/assets/blackCardBgCarImage.png";
+import Link from "next/link";
 
 const mainCardData = {
   title: "Orienco luxury Car Rental",
@@ -14,7 +15,7 @@ const mainCardData = {
     "Orienco luxury Car Rental delivers refined driving experiences with a premium fleet and exceptional service, offering tailored solutions for business, leisure, and special occasions.",
   image: "/images/bmw-m4.png", // Assuming an image path
   buttonText: "See All Cars",
-  link: "#",
+  link: "/cars",
 };
 
 const smallCardsData = [
@@ -57,7 +58,7 @@ const Features = () => {
           className="relative bg-black rounded-3xl p-8 flex flex-col justify-between overflow-hidden"
         >
           {/* White flash highlight in top-left */}
-          <div className="pointer-events-none absolute -top-20 -left-24 h-64 w-64 rounded-4xl bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.95),rgba(255,255,255,0.1),transparent)] opacity-80" />
+          <div className="pointer-events-none absolute -top-48 -left-48 h-[470px] w-[470px] rounded-full bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,1),rgba(255,255,255,0.2),transparent)] opacity-90" />
           {/* Low-visibility car image at the bottom */}
           <div className="pointer-events-none absolute inset-x-0 bottom-0 h-1/2 opacity-15">
             <Image
@@ -81,9 +82,9 @@ const Features = () => {
             </Typography>
           </div>
           <div className="relative z-10 mt-8">
-            <PremiumButton variant="white" className="w-full">
+            <Link href={mainCardData.link}><PremiumButton variant="white" className="w-full cursor-pointer">
               {mainCardData.buttonText}
-            </PremiumButton>
+            </PremiumButton></Link>
           </div>
         </motion.div>
 

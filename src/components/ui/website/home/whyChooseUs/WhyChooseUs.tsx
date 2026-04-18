@@ -9,6 +9,7 @@ import { motion } from "framer-motion";
 // Import images
 import mercedesEmblem from "@/assets/whyChooseUs/mercedes-emblem-bw.png";
 import carPlaceholder from "@/assets/whyChooseUs/car-placeholder-bw.png";
+import Link from "next/link";
 
 const WhyChooseUs = () => {
     return (
@@ -63,9 +64,9 @@ const WhyChooseUs = () => {
                                 Contact us to check availability and reserve your preferred car with quick confirmation. Choose hourly, daily, or monthly rental options with simple and transparent pricing.
                             </Typography>
                         </div>
-                        <PremiumButton variant="white" className="w-full">
+                        <Link href={"/cars"}><PremiumButton variant="white" className="w-full cursor-pointer">
                             See All Cars
-                        </PremiumButton>
+                        </PremiumButton></Link>
                     </motion.div>
 
                     {/* Bottom Left: Premium Fleet Selection Card */}
@@ -84,9 +85,9 @@ const WhyChooseUs = () => {
                                 Drive from a wide range of luxury, sports, and economy cars, all professionally well-maintained to ensure maximum comfort, safety, reliability, and top-tier performance on every journey.
                             </Typography>
                         </div>
-                        <PremiumButton variant="white" className="w-full">
+                        <Link href={"/cars"}><PremiumButton variant="white" className="w-full cursor-pointer">
                             See All Cars
-                        </PremiumButton>
+                        </PremiumButton></Link>
                     </motion.div>
 
                     {/* Bottom Right: Second Image Placeholder */}

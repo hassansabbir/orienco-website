@@ -14,6 +14,7 @@ import porsche718 from "@/assets/vehicles/porsche-718-boxster.png";
 import mercedesSClass from "@/assets/vehicles/mercedes-s-class.png";
 import mitsubishiLancer from "@/assets/vehicles/mitsubishi-lancer.png";
 import toyotaSupra from "@/assets/vehicles/toyota-supra.png";
+import Link from "next/link";
 
 const vehicles = [
     {
@@ -103,13 +104,13 @@ const FeaturedVehicles = () => {
                 <Typography variant="p" className="text-black/60 text-lg max-w-2xl mb-10 leading-relaxed">
                     Experience premium car rental service with vehicles built for comfort, style, and reliability.
                 </Typography>
-                <PremiumButton
+                <Link href={"/cars"}><PremiumButton
                     variant="black"
                     icon={<ArrowUpRight className="w-5 h-5" />}
-                    className="shadow-2xl hover:shadow-[#00000040]"
+                    className="shadow-2xl hover:shadow-[#00000040] cursor-pointer"
                 >
                     View All
-                </PremiumButton>
+                </PremiumButton></Link>
             </motion.div>
 
             <motion.div

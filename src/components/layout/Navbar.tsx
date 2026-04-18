@@ -67,14 +67,15 @@ const Navbar = () => {
 
       {/* CTA Placeholder */}
       <div className="flex items-center gap-4">
-        <button className={cn(
-          "px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 hidden md:block",
-          isScrolled 
-            ? "bg-white text-black hover:bg-gray-200" 
-            : "bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-black border border-white/20"
-        )}>
-          Book Now
-        </button>
+        <Link href={`/contact`}>
+          <button className={cn(
+            "px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 hidden md:block cursor-pointer",
+            isScrolled
+              ? "bg-white text-black hover:bg-gray-200"
+              : "bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-black border border-white/20"
+          )}>
+            Book Now
+          </button> </Link>
       </div>
     </nav>
   );
