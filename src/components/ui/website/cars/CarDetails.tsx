@@ -9,6 +9,7 @@ import Container from "@/components/ui/Container";
 import Typography from "@/components/ui/Typography";
 import { Car } from "@/constants/cars";
 import { cn } from "@/lib/utils";
+import PremiumButton from "../../PremiumButton";
 
 interface CarDetailsProps {
   car: Car;
@@ -96,7 +97,7 @@ const CarDetails = ({ car }: CarDetailsProps) => {
           </div>
 
           {/* Right Column - Info */}
-          <div className="space-y-10">
+          <div className="space-y-7">
             {/* Title & Price */}
             <div className="space-y-6">
               <div className="inline-block px-4 py-1.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold tracking-wider uppercase">
@@ -127,13 +128,18 @@ const CarDetails = ({ car }: CarDetailsProps) => {
             </Typography>
 
             {/* CTA Button */}
-            <button className="flex items-center gap-4 px-10 py-5 rounded-2xl bg-[#1A1A1A] text-white font-semibold hover:bg-black shadow-2xl shadow-black/20 transition-all hover:scale-[1.02] active:scale-[0.98]">
-              <span className="text-xl">Book A Call</span>
-              <ArrowUpRight size={24} />
-            </button>
+            <Link href="/contact">
+              <PremiumButton
+                variant="black"
+                icon={<ArrowUpRight className="w-5 h-5" />}
+                className="w-fit px-6 py-3 cursor-pointer"
+              >
+                Book a Call
+              </PremiumButton>
+            </Link>
 
             {/* Features Section */}
-            <div className="pt-10 border-t border-gray-100 space-y-8">
+            <div className="pt-8 border-t border-gray-100 space-y-6 mt-5">
               <Typography variant="h3" className="font-bold text-2xl text-gray-900">
                 Features
               </Typography>
