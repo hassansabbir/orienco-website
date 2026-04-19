@@ -4,6 +4,7 @@ import Features from "./home/features/Features";
 import WhyChooseUs from "./home/whyChooseUs/WhyChooseUs";
 import WhatOurCustomersSay from "./home/whatOurCustomersSay/WhatOurCustomersSay";
 import CTASection from "./CTASection";
+import Faq from "./faq/Faq";
 
 const WebsiteMainPage = () => {
   return (
@@ -13,6 +14,7 @@ const WebsiteMainPage = () => {
       <FeaturedVehicles />
       <WhyChooseUs />
       <WhatOurCustomersSay />
+      <Faq />
       <CTASection />
     </div>
   );

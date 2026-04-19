@@ -20,7 +20,7 @@ const iconMap = {
 
 export default function Footer() {
   return (
-    <footer className="bg-white border-t border-border pt-16 pb-0 relative overflow-hidden mt-auto">
+    <footer className="bg-white border-t border-border pt-16 pb-48 md:pb-48 relative overflow-hidden mt-auto">
       <Container>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8 mb-12">
           {/* Brand section */}

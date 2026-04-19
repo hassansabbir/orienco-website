@@ -53,7 +53,7 @@ const VehicleCard = ({ name, priceRange, image }: { name: string; priceRange: st
     return (
         <motion.div
             whileHover="hover"
-            className="group relative overflow-hidden rounded-[2.5rem] bg-black aspect-[4/4] cursor-pointer"
+            className="group relative overflow-hidden rounded-3xl bg-black aspect-[3/3] cursor-pointer"
         >
             <motion.div
                 variants={{

@@ -41,31 +41,33 @@ const Navbar = () => {
     <>
       <nav
         className={cn(
-          "fixed top-0 left-0 right-0 z-[100] flex items-center justify-between px-6 py-4 md:px-12 transition-all duration-500",
+          "fixed top-0 left-0 right-0 z-[100] grid grid-cols-2 md:grid-cols-3 items-center px-6 py-4 md:px-12 transition-all duration-500",
           isScrolled || isMenuOpen
             ? "bg-black/90 backdrop-blur-md py-3 shadow-2xl border-b border-white/5"
             : "bg-gradient-to-b from-black/60 via-black/30 to-transparent py-6"
         )}
       >
         {/* Logo */}
-        <Link href="/" className="flex items-center transition-transform hover:scale-105 active:scale-95">
-          <div className={cn(
-            "relative transition-all duration-500",
-            isScrolled ? "w-10 h-10 md:w-12 md:h-12" : "w-12 h-12 md:w-14 md:h-14"
-          )}>
-            <Image
-              src={logo}
-              alt="Orienco Logo"
-              fill
-              priority
-              sizes="(max-width: 768px) 48px, 56px"
-              className="object-contain rounded-xl"
-            />
-          </div>
-        </Link>
+        <div className="flex justify-start">
+          <Link href="/" className="flex items-center transition-transform hover:scale-105 active:scale-95">
+            <div className={cn(
+              "relative transition-all duration-500",
+              isScrolled ? "w-10 h-10 md:w-12 md:h-12" : "w-12 h-12 md:w-14 md:h-14"
+            )}>
+              <Image
+                src={logo}
+                alt="Orienco Logo"
+                fill
+                priority
+                sizes="(max-width: 768px) 48px, 56px"
+                className="object-contain rounded-xl"
+              />
+            </div>
+          </Link>
+        </div>
 
         {/* Desktop Navigation Links */}
-        <div className="hidden items-center gap-10 md:flex">
+        <div className="hidden md:flex justify-center items-center gap-10">
           {navLinks.map((link) => (
             <Link
               key={link.name}
@@ -78,20 +80,8 @@ const Navbar = () => {
           ))}
         </div>
 
-        {/* Right Side Actions */}
-        <div className="flex items-center gap-4">
-          <Link href="/contact" className="hidden md:block">
-            <button className={cn(
-              "px-5 py-2.5 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 cursor-pointer",
-              isScrolled
-                ? "bg-white text-black hover:bg-gray-200"
-                : "bg-white/10 text-white backdrop-blur-md hover:bg-white hover:text-black border border-white/20"
-            )}>
-              Book Now
-            </button>
-          </Link>
-
-          {/* Mobile Menu Toggle */}
+        {/* Right Side - Empty on Desktop, Toggle on Mobile */}
+        <div className="flex justify-end items-center">
           <button
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             className="p-2 text-white md:hidden transition-transform active:scale-90"
