@@ -17,14 +17,14 @@ interface CarsPageProps {
 const CARS_PER_PAGE = 6;
 
 const CarsPage = ({ cars = [] }: CarsPageProps) => {
-  const [activeCategory, setActiveCategory] = useState("ALL");
+  // const [activeCategory, setActiveCategory] = useState("ALL");
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredCars = useMemo(() => {
     // Note: Filtering logic can be updated once categories are available in API
-    if (activeCategory === "ALL") return cars;
+    // if (activeCategory === "ALL") return cars;
     return cars;
-  }, [activeCategory, cars]);
+  }, [cars]);
 
   const totalPages = Math.ceil(filteredCars.length / CARS_PER_PAGE);
   const currentCars = filteredCars.slice(
@@ -32,10 +32,11 @@ const CarsPage = ({ cars = [] }: CarsPageProps) => {
     currentPage * CARS_PER_PAGE,
   );
 
-  const handleCategoryChange = (category: string) => {
-    setActiveCategory(category);
-    setCurrentPage(1);
-  };
+  // const handleCategoryChange = (category: string) => {
+  //   setActiveCategory(category);
+  //   setCurrentPage(1);
+  // };
+
 
   return (
     <section className="py-24 bg-[#FAFAFA]">
@@ -61,7 +62,8 @@ const CarsPage = ({ cars = [] }: CarsPageProps) => {
         {/* Cars Grid */}
         <AnimatePresence mode="wait">
           <motion.div
-            key={activeCategory + currentPage}
+            key={currentPage}
+
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -20 }}

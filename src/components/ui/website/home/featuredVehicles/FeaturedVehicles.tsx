@@ -109,7 +109,7 @@ const FeaturedVehicles = ({ cars = [] }: FeaturedVehiclesProps) => {
         }}
         className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
       >
-        {displayCars.map((car, index) => (
+        {displayCars.map((car) => (
           <motion.div
             key={car._id}
             variants={{
