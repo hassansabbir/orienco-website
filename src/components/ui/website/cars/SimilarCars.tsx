@@ -2,25 +2,26 @@
 
 import Container from "@/components/ui/Container";
 import Typography from "@/components/ui/Typography";
-import { mockCars } from "@/constants/cars";
+import { Car } from "@/types";
 import CarCard from "./CarCard";
 import { motion } from "framer-motion";
 
 interface SimilarCarsProps {
   currentCarId: string;
   category: string;
+  allCars: Car[];
 }
 
-const SimilarCars = ({ currentCarId, category }: SimilarCarsProps) => {
-  // Find similar cars based on category, excluding the current one
-  const similarCars = mockCars
-    .filter((car) => car.category === category && car.id !== currentCarId)
+const SimilarCars = ({ currentCarId, category, allCars = [] }: SimilarCarsProps) => {
+  // Find similar cars based on brand (category), excluding the current one
+  const similarCars = allCars
+    .filter((car) => car.brand === category && car._id !== currentCarId)
     .slice(0, 3);
 
   // If no similar cars in same category, show any other cars
   if (similarCars.length === 0) {
     similarCars.push(
-      ...mockCars.filter((car) => car.id !== currentCarId).slice(0, 3)
+      ...allCars.filter((car) => car._id !== currentCarId).slice(0, 3)
     );
   }
 
@@ -56,19 +57,13 @@ const SimilarCars = ({ currentCarId, category }: SimilarCarsProps) => {
           >
             {similarCars.map((car) => (
               <motion.div
-                key={car.id}
+                key={car._id}
                 variants={{
                   hidden: { opacity: 0, y: 30 },
                   show: { opacity: 1, y: 0, transition: { duration: 0.6 } },
                 }}
               >
-                <CarCard
-                  id={car.id}
-                  name={car.name}
-                  description={car.description}
-                  price={car.price}
-                  images={car.images}
-                />
+                <CarCard car={car} />
               </motion.div>
             ))}
           </motion.div>

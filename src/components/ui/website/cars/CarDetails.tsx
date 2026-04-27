@@ -1,14 +1,14 @@
 "use client";
 
 import Image from "next/image";
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { ArrowLeft, Check, ArrowUpRight } from "lucide-react";
+import { ArrowLeft, Check, ArrowUpRight, Play } from "lucide-react";
 import Link from "next/link";
 import Container from "@/components/ui/Container";
 import Typography from "@/components/ui/Typography";
-import { Car } from "@/constants/cars";
-import { cn } from "@/lib/utils";
+import { Car } from "@/types";
+import { cn, getFileUrl } from "@/lib/utils";
 import PremiumButton from "../../PremiumButton";
 
 interface CarDetailsProps {
@@ -16,7 +16,24 @@ interface CarDetailsProps {
 }
 
 const CarDetails = ({ car }: CarDetailsProps) => {
-  const [selectedImageIndex, setSelectedImageIndex] = useState(0);
+  const [selectedIndex, setSelectedIndex] = useState(0);
+
+  const slides = useMemo(() => {
+    const items: { type: "video" | "image"; url: string }[] = [];
+    if (car.video) {
+      items.push({ type: "video", url: getFileUrl(car.video) });
+    }
+    if (car.images && car.images.length > 0) {
+      car.images.forEach((img) => {
+        items.push({ type: "image", url: getFileUrl(img) });
+      });
+    }
+    return items;
+  }, [car.video, car.images]);
+
+  if (slides.length === 0) return null;
+
+  const currentSlide = slides[selectedIndex];
 
   return (
     <section className="pt-20 pb-20 bg-white min-h-screen">
@@ -35,36 +52,48 @@ const CarDetails = ({ car }: CarDetailsProps) => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:items-center items-start">
           {/* Left Column - Gallery */}
           <div className="space-y-6">
-            {/* Main Image */}
+            {/* Main Media */}
             <div className="relative aspect-[16/11] rounded-[2rem] overflow-hidden bg-gray-50 border border-gray-100 shadow-xl shadow-black/5">
               <AnimatePresence mode="wait">
                 <motion.div
-                  key={selectedImageIndex}
+                  key={selectedIndex}
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
                   transition={{ duration: 0.4 }}
                   className="absolute inset-0"
                 >
-                  <Image
-                    src={car.images[selectedImageIndex]}
-                    alt={car.name}
-                    fill
-                    priority
-                    sizes="(max-width: 1024px) 100vw, 50vw"
-                    className="object-cover"
-                  />
+                  {currentSlide.type === "video" ? (
+                    <video
+                      src={currentSlide.url}
+                      className="w-full h-full object-cover"
+                      autoPlay
+                      muted
+                      loop
+                      playsInline
+                    />
+                  ) : (
+                    <Image
+                      src={currentSlide.url}
+                      alt={car.name}
+                      fill
+                      priority
+                      sizes="(max-width: 1024px) 100vw, 50vw"
+                      className="object-cover"
+                      unoptimized
+                    />
+                  )}
                 </motion.div>
               </AnimatePresence>
 
               {/* In-image indicators */}
               <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2 p-2 rounded-full bg-black/10 backdrop-blur-sm">
-                {car.images.map((_, i) => (
+                {slides.map((_, i) => (
                   <div
                     key={i}
                     className={cn(
                       "w-2 h-2 rounded-full transition-all duration-300",
-                      i === selectedImageIndex ? "bg-white w-4" : "bg-white/40"
+                      i === selectedIndex ? "bg-white w-4" : "bg-white/40"
                     )}
                   />
                 ))}
@@ -73,24 +102,35 @@ const CarDetails = ({ car }: CarDetailsProps) => {
 
             {/* Thumbnail Gallery */}
             <div className="grid grid-cols-4 gap-4">
-              {car.images.map((image, index) => (
+              {slides.map((slide, index) => (
                 <button
                   key={index}
-                  onClick={() => setSelectedImageIndex(index)}
+                  onClick={() => setSelectedIndex(index)}
                   className={cn(
-                    "relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300",
-                    selectedImageIndex === index
+                    "relative aspect-square rounded-xl overflow-hidden border-2 transition-all duration-300 bg-gray-100",
+                    selectedIndex === index
                       ? "border-black shadow-lg"
                       : "border-transparent opacity-60 hover:opacity-100"
                   )}
                 >
-                  <Image
-                    src={image}
-                    alt={`${car.name} view ${index + 1}`}
-                    fill
-                    sizes="(max-width: 768px) 25vw, 150px"
-                    className="object-cover"
-                  />
+                  {slide.type === "video" ? (
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <Play className="w-8 h-8 text-black/40 relative z-10" />
+                      <video
+                        src={slide.url}
+                        className="absolute inset-0 w-full h-full object-cover opacity-30"
+                      />
+                    </div>
+                  ) : (
+                    <Image
+                      src={slide.url}
+                      alt={`${car.name} view ${index + 1}`}
+                      fill
+                      sizes="(max-width: 768px) 25vw, 150px"
+                      className="object-cover"
+                      unoptimized
+                    />
+                  )}
                 </button>
               ))}
             </div>
@@ -101,7 +141,7 @@ const CarDetails = ({ car }: CarDetailsProps) => {
             {/* Title & Price */}
             <div className="space-y-6">
               <div className="inline-block px-4 py-1.5 rounded-full bg-gray-100 text-gray-500 text-xs font-bold tracking-wider uppercase">
-                {car.category}
+                {car.brand}
               </div>
               <div className="space-y-3">
                 <Typography
@@ -112,7 +152,7 @@ const CarDetails = ({ car }: CarDetailsProps) => {
                 </Typography>
                 <div className="flex items-baseline gap-2">
                   <span className="text-4xl font-bold text-gray-900">
-                    ${car.price}
+                    ${car.perDay}
                   </span>
                   <span className="text-gray-400 font-medium">/ per day</span>
                 </div>

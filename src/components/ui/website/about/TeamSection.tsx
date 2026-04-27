@@ -4,30 +4,14 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import Typography from "@/components/ui/Typography";
+import { TeamMember } from "@/types";
+import { getFileUrl } from "@/lib/utils";
 
-import michealMia from "@/assets/team/micheal_mia.png";
-import thomasKeller from "@/assets/team/thomas_keller.png";
-import salesDirector from "@/assets/team/sales_director.png";
+interface TeamSectionProps {
+  members: TeamMember[];
+}
 
-const teamMembers = [
-  {
-    name: "Micheal Mia",
-    role: "Founder & CEO",
-    image: michealMia,
-  },
-  {
-    name: "Thomas Keller",
-    role: "Lead Service Advisor",
-    image: thomasKeller,
-  },
-  {
-    name: "Aria Chen",
-    role: "Sales Director",
-    image: salesDirector,
-  },
-];
-
-const TeamSection = () => {
+const TeamSection = ({ members = [] }: TeamSectionProps) => {
   return (
     <section className="py-24 bg-white overflow-hidden">
       <Container>
@@ -57,9 +41,9 @@ const TeamSection = () => {
 
         {/* Team Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {teamMembers.map((member, index) => (
+          {members.map((member, index) => (
             <motion.div
-              key={member.name}
+              key={member._id}
               initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
               whileHover="hover"
@@ -75,12 +59,13 @@ const TeamSection = () => {
                 className="absolute inset-0"
               >
                 <Image
-                  src={member.image}
+                  src={getFileUrl(member.image)}
                   alt={member.name}
                   fill
                   priority={index < 2}
                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
                   className="object-cover"
+                  unoptimized
                 />
               </motion.div>
               
@@ -99,7 +84,7 @@ const TeamSection = () => {
                   variant="p"
                   className="text-white/70 text-sm font-medium tracking-wide uppercase"
                 >
-                  {member.role}
+                  {member.designation}
                 </Typography>
               </div>
             </motion.div>

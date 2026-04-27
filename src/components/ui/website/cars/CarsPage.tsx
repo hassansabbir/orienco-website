@@ -6,23 +6,25 @@ import Container from "@/components/ui/Container";
 import CarCard from "./CarCard";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 import { cn } from "@/lib/utils";
+import { Car } from "@/types";
 
-// Assets
-import { mockCars } from "@/constants/cars";
+interface CarsPageProps {
+  cars: Car[];
+}
 
 const categories = ["ALL", "SPORTS", "LUXURY", "SUV"];
 
 const CARS_PER_PAGE = 6;
 
-const CarsPage = () => {
+const CarsPage = ({ cars = [] }: CarsPageProps) => {
   const [activeCategory, setActiveCategory] = useState("ALL");
   const [currentPage, setCurrentPage] = useState(1);
 
   const filteredCars = useMemo(() => {
-    return activeCategory === "ALL"
-      ? mockCars
-      : mockCars.filter((car) => car.category === activeCategory);
-  }, [activeCategory]);
+    // Note: Filtering logic can be updated once categories are available in API
+    if (activeCategory === "ALL") return cars;
+    return cars;
+  }, [activeCategory, cars]);
 
   const totalPages = Math.ceil(filteredCars.length / CARS_PER_PAGE);
   const currentCars = filteredCars.slice(
@@ -67,12 +69,12 @@ const CarsPage = () => {
             className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12"
           >
             {currentCars.map((car, index) => (
-              <CarCard key={car.id} {...car} priority={index < 2} />
+              <CarCard key={car._id} car={car} priority={index < 2} />
             ))}
           </motion.div>
         </AnimatePresence>
 
-        {/* Pagination Overlay logic (only showing numbered pagination as per design) */}
+        {/* Pagination */}
         {totalPages > 1 && (
           <div className="mt-20 flex justify-center items-center gap-2">
             <button

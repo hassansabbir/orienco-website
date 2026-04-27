@@ -2,23 +2,23 @@
 
 import Container from "@/components/ui/Container";
 import Typography from "@/components/ui/Typography";
-import { CarSpecs } from "@/constants/cars";
+import { Car } from "@/types";
 import { motion } from "framer-motion";
 
 interface TechnicalSpecsProps {
-  specs: CarSpecs;
+  car: Car;
 }
 
-const TechnicalSpecs = ({ specs }: TechnicalSpecsProps) => {
+const TechnicalSpecs = ({ car }: TechnicalSpecsProps) => {
   const specItems = [
-    { label: "Engine", value: specs.engine },
-    { label: "Horsepower", value: specs.horsepower },
-    { label: "Acceleration", value: specs.acceleration },
-    { label: "Top Speed", value: specs.topSpeed },
-    { label: "Transmission", value: specs.transmission },
-    { label: "Drivetrain", value: specs.drivetrain },
-    { label: "Seating Capacity", value: specs.seatingCapacity },
-    { label: "Fuel Type", value: specs.fuelType },
+    { label: "Engine", value: car.engineSize },
+    { label: "Horsepower", value: car.horsepower },
+    { label: "Acceleration", value: car.acceleration },
+    { label: "Top Speed", value: car.topSpeed },
+    { label: "Transmission", value: car.transmission },
+    { label: "Drivetrain", value: car.drivetrain },
+    { label: "Seating Capacity", value: car.seats },
+    { label: "Fuel Type", value: car.fuelType },
   ];
 
   return (
