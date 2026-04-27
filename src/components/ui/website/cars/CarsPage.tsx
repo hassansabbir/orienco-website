@@ -12,7 +12,7 @@ interface CarsPageProps {
   cars: Car[];
 }
 
-const categories = ["ALL", "SPORTS", "LUXURY", "SUV"];
+// const categories = ["ALL", "SPORTS", "LUXURY", "SUV"];
 
 const CARS_PER_PAGE = 6;
 
@@ -29,7 +29,7 @@ const CarsPage = ({ cars = [] }: CarsPageProps) => {
   const totalPages = Math.ceil(filteredCars.length / CARS_PER_PAGE);
   const currentCars = filteredCars.slice(
     (currentPage - 1) * CARS_PER_PAGE,
-    currentPage * CARS_PER_PAGE
+    currentPage * CARS_PER_PAGE,
   );
 
   const handleCategoryChange = (category: string) => {
@@ -41,7 +41,7 @@ const CarsPage = ({ cars = [] }: CarsPageProps) => {
     <section className="py-24 bg-[#FAFAFA]">
       <Container>
         {/* Category Filters */}
-        <div className="flex justify-center items-center gap-4 mb-16 overflow-x-auto pb-4 no-scrollbar">
+        {/* <div className="flex justify-center items-center gap-4 mb-16 overflow-x-auto pb-4 no-scrollbar">
           {categories.map((category) => (
             <button
               key={category}
@@ -56,7 +56,7 @@ const CarsPage = ({ cars = [] }: CarsPageProps) => {
               {category}
             </button>
           ))}
-        </div>
+        </div> */}
 
         {/* Cars Grid */}
         <AnimatePresence mode="wait">
@@ -93,7 +93,7 @@ const CarsPage = ({ cars = [] }: CarsPageProps) => {
                   "w-10 h-10 rounded-full text-sm font-semibold transition-all duration-300",
                   currentPage === i + 1
                     ? "bg-black text-white shadow-lg shadow-black/10"
-                    : "bg-white text-gray-400 hover:text-gray-900 border border-gray-100 hover:border-gray-200"
+                    : "bg-white text-gray-400 hover:text-gray-900 border border-gray-100 hover:border-gray-200",
                 )}
               >
                 {i + 1}

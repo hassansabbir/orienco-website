@@ -4,38 +4,11 @@ import { motion } from "framer-motion";
 import Container from "@/components/ui/Container";
 import Typography from "@/components/ui/Typography";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { ContactInfoData } from "@/types";
 
-const contactItems = [
-  {
-    icon: MapPin,
-    title: "Our Showroom",
-    lines: [
-      "123 Luxury Avenue",
-      "Beverly Hills, CA 90210",
-      "United States",
-    ],
-  },
-  {
-    icon: Phone,
-    title: "Phone",
-    lines: ["+1 (555) 124-7856"],
-    badge: "AVAILABLE 24/7",
-  },
-  {
-    icon: Mail,
-    title: "Email Inquiry",
-    lines: ["concierge@orienco.com", "support@orienco.com"],
-  },
-  {
-    icon: Clock,
-    title: "Showroom Hours",
-    lines: [
-      "Mon - Fri: 8:00 AM - 8:00 PM",
-      "Sat: 9:00 AM - 6:00 PM",
-      "Sun: Closed (Concierge 24/7)",
-    ],
-  },
-];
+interface ContactInfoProps {
+  contactData: ContactInfoData;
+}
 
 const socials = [
   {
@@ -76,7 +49,31 @@ const socials = [
   },
 ];
 
-const ContactInfo = () => {
+const ContactInfo = ({ contactData }: ContactInfoProps) => {
+  const contactItems = [
+    {
+      icon: MapPin,
+      title: "Our Showroom",
+      lines: [contactData.address],
+    },
+    {
+      icon: Phone,
+      title: "Phone",
+      lines: [contactData.phoneNumber],
+      badge: "AVAILABLE 24/7",
+    },
+    {
+      icon: Mail,
+      title: "Email Inquiry",
+      lines: [contactData.email],
+    },
+    {
+      icon: Clock,
+      title: "Showroom Hours",
+      lines: [contactData.openHours],
+    },
+  ];
+
   return (
     <section className="py-20 md:py-28 bg-white overflow-hidden">
       <Container>
@@ -193,7 +190,7 @@ const ContactInfo = () => {
             <div className="relative w-full h-full min-h-[500px] lg:min-h-[600px] rounded-[2rem] overflow-hidden shadow-2xl">
               <iframe
                 title="Orienco Rental Location"
-                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3153.0977799432085!2d-118.40054182359857!3d34.07362941617584!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x80c2bc04d6d147ab%3A0xd6c7c379fd081ed1!2sBeverly%20Hills%2C%20CA%2090210!5e0!3m2!1sen!2sus!4v1700000000000!5m2!1sen!2sus"
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(contactData.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                 width="100%"
                 height="100%"
                 style={{ border: 0, position: "absolute", inset: 0 }}
@@ -202,6 +199,7 @@ const ContactInfo = () => {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
+
           </motion.div>
         </div>
       </Container>

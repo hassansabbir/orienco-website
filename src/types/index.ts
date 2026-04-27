@@ -105,4 +105,17 @@ export interface TeamMember {
   createdAt: string;
   updatedAt: string;
 }
+
+export interface ContactInfoData {
+  _id: string;
+  platform: string;
+  address: string;
+  email: string;
+  openHours: string;
+  phoneNumber: string;
+  websiteLink: string;
+  createdAt: string;
+  updatedAt: string;
+}
+
 
