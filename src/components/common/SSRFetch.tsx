@@ -29,12 +29,29 @@ export async function SSRFetch<T>({
   let fetchError: any = null;
 
   try {
+    console.log(`\n================================`);
+    console.log(`[SSRFetch] Initiating request to: ${endpoint}`);
+    console.log(`[SSRFetch] Method: ${method}`);
+    if (body) console.log(`[SSRFetch] Body:`, JSON.stringify(body));
+    console.log(`================================\n`);
+
     data = await apiRequest<T>(endpoint, {
       ...options,
       method,
       body: body ? JSON.stringify(body) : undefined,
     });
+    
+    console.log(`[SSRFetch] Success for: ${endpoint}`);
   } catch (error) {
+    console.error(`\n!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!`);
+    console.error(`[SSRFetch] FAILED request to: ${endpoint}`);
+    console.error(`[SSRFetch] Full Error Details:`, error);
+    if (error instanceof ApiError) {
+      console.error(`[SSRFetch] Status: ${error.status}`);
+      console.error(`[SSRFetch] Response Data:`, JSON.stringify(error.data));
+    }
+    console.error(`!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n`);
+    
     fetchError = error;
   }
 
