@@ -48,9 +48,13 @@ export async function apiRequest<T = any>(
         endpoint.startsWith("/") ? endpoint : `/${endpoint}`
       }`;
 
-  const headers = {
+  const headers: Record<string, string> = {
     ...API_CONFIG.headers,
-    ...(options.headers || {}),
+    ...(isServer ? { 
+      "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/121.0.0.0 Safari/537.36",
+      "Accept": "application/json, text/plain, */*"
+    } : {}),
+    ...(options.headers as Record<string, string> || {}),
   };
 
   const config: RequestInit = {
