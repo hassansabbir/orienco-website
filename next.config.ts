@@ -2,7 +2,7 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   /* config options here */
-  allowedDevOrigins: ['10.10.7.47'],
+  allowedDevOrigins: ["*"],
   images: {
     remotePatterns: [
       {
@@ -17,7 +17,6 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "fahim5004.naimulhassan.me",
       },
-
     ],
   },
 };
