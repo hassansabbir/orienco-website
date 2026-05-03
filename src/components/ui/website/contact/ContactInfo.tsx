@@ -119,7 +119,7 @@ const ContactInfo = ({ contactData }: ContactInfoProps) => {
                   className="flex items-start gap-5 group"
                 >
                   {/* Icon */}
-                  <div className="flex-shrink-0 w-12 h-12 rounded-full bg-black flex items-center justify-center text-white group-hover:bg-gray-500 transition-colors duration-300">
+                  <div className="shrink-0 w-12 h-12 rounded-full bg-black flex items-center justify-center text-white group-hover:bg-gray-500 transition-colors duration-300">
                     <item.icon className="w-5 h-5" />
                   </div>
 
@@ -187,7 +187,7 @@ const ContactInfo = ({ contactData }: ContactInfoProps) => {
             viewport={{ once: true }}
             className="relative"
           >
-            <div className="relative w-full h-full min-h-[500px] lg:min-h-[600px] rounded-[2rem] overflow-hidden shadow-2xl">
+            <div className="relative w-full h-full min-h-[500px] lg:min-h-[600px] rounded-4xl overflow-hidden shadow-2xl">
               <iframe
                 title="Orienco Rental Location"
                 src={`https://maps.google.com/maps?q=${encodeURIComponent(contactData.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
@@ -199,7 +199,6 @@ const ContactInfo = ({ contactData }: ContactInfoProps) => {
                 referrerPolicy="no-referrer-when-downgrade"
               />
             </div>
-
           </motion.div>
         </div>
       </Container>
