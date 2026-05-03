@@ -17,6 +17,10 @@ const nextConfig: NextConfig = {
         protocol: "https",
         hostname: "fahim5004.naimulhassan.me",
       },
+      {
+        protocol: "https",
+        hostname: "api.oriencoinc.com",
+      },
     ],
   },
 };
