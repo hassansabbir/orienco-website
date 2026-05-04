@@ -50,27 +50,41 @@ const socials = [
 ];
 
 const ContactInfo = ({ contactData }: ContactInfoProps) => {
+  const fallbackData: ContactInfoData = {
+    _id: "-",
+    platform: "carRental",
+    address: "-",
+    email: "-",
+    openHours: "-",
+    phoneNumber: "-",
+    websiteLink: "-",
+    createdAt: new Date().toISOString(),
+    updatedAt: new Date().toISOString(),
+  };
+
+  const data = contactData || fallbackData;
+
   const contactItems = [
     {
       icon: MapPin,
       title: "Our Showroom",
-      lines: [contactData.address],
+      lines: [data.address || fallbackData.address],
     },
     {
       icon: Phone,
       title: "Phone",
-      lines: [contactData.phoneNumber],
+      lines: [data.phoneNumber || fallbackData.phoneNumber],
       badge: "AVAILABLE 24/7",
     },
     {
       icon: Mail,
       title: "Email Inquiry",
-      lines: [contactData.email],
+      lines: [data.email || fallbackData.email],
     },
     {
       icon: Clock,
       title: "Showroom Hours",
-      lines: [contactData.openHours],
+      lines: [data.openHours || fallbackData.openHours],
     },
   ];
 
@@ -190,7 +204,7 @@ const ContactInfo = ({ contactData }: ContactInfoProps) => {
             <div className="relative w-full h-full min-h-[500px] lg:min-h-[600px] rounded-4xl overflow-hidden shadow-2xl">
               <iframe
                 title="Orienco Rental Location"
-                src={`https://maps.google.com/maps?q=${encodeURIComponent(contactData.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(data.address || fallbackData.address)}&t=&z=13&ie=UTF8&iwloc=&output=embed`}
                 width="100%"
                 height="100%"
                 style={{ border: 0, position: "absolute", inset: 0 }}
